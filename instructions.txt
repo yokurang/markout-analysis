@@ -1,0 +1,37 @@
+===[ Assignment ]===
+
+GMMAUSD, LMDAUSD, ZTAUSD, BTAUSD are four hypothetical instruments. For each instrument,
+you are given:
+* some metadata (<instrument>.json) <OK>
+* top-of-book market data (<instrument>_md.csv) <OK>
+* a set of trades (<instrument>_trades.csv). <OK>
+
+You are also provided a list of intervals in millisecond units (horizon_ticks). <OK>
+
+For each instrument, you are to deliver the following:
+    * A plot visualizing both the market data and the trades, for an interesting 1 hour period of your choice.
+    * A plot visualizing the aggregate markout curve of all trades for the symbol, using the intervals specified
+      in the file "horizon_ticks". Please ensure your curve shows "margin" - i.e. PNL normalized by volume.
+	  * For example, if the file horizon_ticks contained the following intervals: [0, 100, 200], the pnl-markout curve 
+	    for a trade dealt at time t would show 3 datapoints: the PNL of the trade at time t, t+100ms, t+200ms. 
+	    The overall markout curve can then be transformed to show _margin_ rather than PNL by normalizing the datapoints 
+	    by the trade size.
+      * The above describes computing a curve for a single trade, we are looking for you to 
+        compute an aggregate curve incorporating all trades, showing overall margin at each interval.
+          
+    * Answers to the following questions:
+        * Assuming all trades for this instrument were executed by a single strategy, and the sides of the trades are from
+          the perspective of said strategy, is the strategy a maker or a taker?
+        * Can you deduce any other interesting characteristics of the strategy, from its post-trade profile?
+        * Assuming the day was started with no position, what was the maximum drawdown experienced by the strategy
+          for the period covered by the market data, and at which timestamp did this occur? 
+          Please compute drawdown from mark-to-market PNL.
+          
+        NOTE: Please keep your answers to a maximum of a few lines.
+
+
+Please provide all python code used to generate the output, 
+and your answers to the above questions in a suitable format (.pdf preferred for the latter).
+
+
+--END--
